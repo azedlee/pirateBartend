@@ -25,10 +25,10 @@ def customer_drink():
             user_answer = input(question)
             user_answer = user_answer.lower()
             if user_answer == "yes" or user_answer == "y":
-                answers[category] = user_answer
+                answers[category] = True
                 correct_check = False
             elif user_answer == "no" or user_answer == "n":
-                answers[category] = user_answer
+                answers[category] = False
                 correct_check = False
             else:
                 print("Wrong input!")
@@ -37,7 +37,7 @@ def customer_drink():
 def make_drink(answers):
     drink = []
     for ingredient_type in ingredients:
-        if answers == "yes" or "y":
+        if answers[ingredient_type]:
             drink.append(random.choice(ingredients[ingredient_type]))
         else:
             continue
